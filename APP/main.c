@@ -158,6 +158,8 @@ int main()
     		}
     		if(Local_U32_Read > MAX_DISTANCE)
     		{
+    			H_LCD_Void_LCDClearScreen();
+    			H_LCD_Void_WriteString("RIGHT");
 				APP_Void_TurnRight();
 				APP_Void_StopVehicle();
 				_delay_ms(300);
@@ -179,6 +181,9 @@ int main()
 				}
 				if(Local_U32_Read > MAX_DISTANCE)
 				{
+
+	    			H_LCD_Void_LCDClearScreen();
+	    			H_LCD_Void_WriteString("LEFT");
 					APP_Void_TurnLeft();
 					APP_Void_StopVehicle();
 					_delay_ms(300);
@@ -186,10 +191,11 @@ int main()
 					H_DCMotor_Void_DCMotorLSetDirection(CW);
 					H_Servo_Void_ServoSetAngel(FORWARD_VISION);
 					APP_Void_MoveForward(45);
+				}else{
+					APP_Void_StopVehicle();
 				}
     		}
     	}
-    	H_LCD_Void_WriteString("cm");
 //    	if((u32) H_HC_SR04_GetDistance() <= MAX_DISTANCE){
 //    		APP_Void_StopVehicle();
 //    		_delay_ms(250);
